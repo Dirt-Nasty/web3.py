@@ -54,7 +54,7 @@ def make_post_request(endpoint_uri: URI, data: bytes, *args: Any, **kwargs: Any)
 async def async_make_post_request(
     endpoint_uri: URI, data: bytes, *args: Any, **kwargs: Any
 ) -> bytes:
-    kwargs.setdefault('timeout', ClientTimeout(10))
+    kwargs.setdefault('timeout', ClientTimeout(30))
     async with ClientSession(raise_for_status=True) as session:
         async with session.post(endpoint_uri,
                                 data=data,
